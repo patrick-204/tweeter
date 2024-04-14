@@ -18,8 +18,14 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+/* <uniquifier>: Use a unique and descriptive class name */
+/* <weight>: Use a value from 200 to 900 */

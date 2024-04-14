@@ -1,0 +1,42 @@
+nav {
+  height: 120px;
+  width: 100%;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  font-family: "Bungee", sans-serif;
+  padding: 0 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav span {
+  position: relative;
+  top: 9px; /* Adjust tweeter so that the top of the word is centered in the nav */
+}
+
+nav p {
+  position: relative; /* Set position relative to use as reference for <i> child */
+}
+
+nav p i {
+  position: absolute; /* Set position from <p> parent */
+  top: 1em;
+  left: 50%;
+}
+
+/* Set everything after the first letter to lowercase */
+nav p::first-letter {
+  text-transform: lowercase; 
+}
+
+/* Font for the nav */
+.bungee-regular {
+  font-weight: 300;
+  font-style: normal;
+}
+
+.fa-angles-down {
+  color: red;
+}
+
