@@ -3,16 +3,28 @@ nav {
   width: 100%;
   background-color: #4056A1;
   color: #FFFFFF;
-  font-family: "Bungee", sans-serif;
-  padding: 0 1.5em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
 }
 
 nav span {
+  font-weight: 300;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  font-family: "Bungee", sans-serif;
   position: relative;
-  top: 9px; /* Adjust tweeter so that the top of the word is centered in the nav */
+  top: 60px; /* Adjust tweeter so that the top of the word is centered in the nav */
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.nav-item p {
+  margin-right: 0em; /* Adjust spacing between text and icon */
 }
 
 nav p {
@@ -23,17 +35,6 @@ nav p i {
   position: absolute; /* Set position from <p> parent */
   top: 1em;
   left: 50%;
-}
-
-/* Set everything after the first letter to lowercase */
-nav p::first-letter {
-  text-transform: lowercase; 
-}
-
-/* Font for the nav */
-.bungee-regular {
-  font-weight: 300;
-  font-style: normal;
 }
 
 .fa-angles-down {
