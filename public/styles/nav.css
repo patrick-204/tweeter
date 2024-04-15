@@ -5,39 +5,37 @@ nav {
   color: #FFFFFF;
   padding-left: 1.5em;
   padding-right: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 nav span {
+  font-family: "Bungee", sans-serif;
   font-weight: 300;
   font-style: normal;
-  display: flex;
-  align-items: center;
-  font-family: "Bungee", sans-serif;
-  position: relative;
-  top: 60px; /* Adjust tweeter so that the top of the word is centered in the nav */
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  justify-content: end;
 }
 
 .nav-item p {
-  margin-right: 0em; /* Adjust spacing between text and icon */
+  margin-right: 1.5em;
 }
 
-nav p {
-  position: relative; /* Set position relative to use as reference for <i> child */
+.nav-item i {
+  color: red; /* Setting the color for the icon */
 }
 
-nav p i {
-  position: absolute; /* Set position from <p> parent */
-  top: 1em;
-  left: 50%;
+.nav-item-content p {
+  margin-bottom: 0; /* Remove bottom margin */
 }
 
-.fa-angles-down {
-  color: red;
+/* New CSS for stacking the paragraph and icon vertically */
+.nav-item-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
