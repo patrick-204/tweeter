@@ -10,22 +10,22 @@ nav {
   align-items: center;
 }
 
-nav span {
+.nav-title {
   font-family: "Bungee", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
 
-.nav-item {
+.tweet-btn-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.nav-item p {
+.tweet-btn-container p {
   margin-bottom: 0;
 }
 
-.nav-item i {
-  color: red; /* Setting the color for the icon */
+.tweet-btn-container i {
+  color: #eb0a0a; /* Setting the color for the icon */
 }
