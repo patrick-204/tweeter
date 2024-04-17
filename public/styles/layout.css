@@ -3,7 +3,7 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
-html {
+ html {
   box-sizing: border-box;
 }
 *, *:before, *:after {
@@ -25,14 +25,11 @@ body {
 }
 
 .container {
-  position: absolute;
-  margin-top: 520px;
-  margin-left: 80.8px;
+  position: relative; 
+  top: 520px; 
+  margin: 0 auto; 
+  background-color: inherit;
   width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 /*
