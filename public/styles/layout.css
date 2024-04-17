@@ -22,12 +22,11 @@ body {
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
+  display: flex;
 }
 
 .container {
-  position: relative; 
-  top: 520px; 
-  margin: 0 auto; 
+  margin: 520px auto; 
   background-color: inherit;
   width: 90%;
 }
