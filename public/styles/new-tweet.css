@@ -1,0 +1,26 @@
+.tweet-label {
+  display: block;
+}
+
+#tweet-text {
+  width: 100%;
+  margin-top: 10px;
+  border-bottom: 3px solid #4056A1;
+}
+
+.btn-counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  margin-top: 12px; 
+}
+
+.tweet-btn {
+  background-color: #4056A1;
+  color: #FFFFFF;
+  font-family: "Bungee", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+ 
