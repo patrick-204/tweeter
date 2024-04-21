@@ -93,6 +93,8 @@ $(document).ready(() => {
       data: formData,
       success: function(response) {
         console.log("it worked");
+        $('textarea').val('');
+        $('.counter').text('140');
       },
       error: function(xhr, status, error) {
         console.log("error");
