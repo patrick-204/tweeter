@@ -38,7 +38,7 @@ $(document).ready(() => {
       const $tweetArticle = createTweetElement(tweet);
 
       // Append the created tweet article element to the #tweets-container
-      $('.container').append($tweetArticle);
+      $('.tweets').append($tweetArticle);
     }
   };
 
