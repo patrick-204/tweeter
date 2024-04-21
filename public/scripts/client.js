@@ -4,31 +4,20 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(() => {
-  // Fake data taken from initial-tweets.json
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
+  // GET tweets from the server /tweets page
+  const loadTweets = () => {
+      $.ajax({
+      url: '/tweets',
+      type: 'GET',
+      dataType: 'json',
+      success: function(tweetData) {
+        renderTweets(tweetData);
       },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
+      error: function(xhr, status, error) {
+        console.log(error);
+      }
+    });
+  }
 
   // Render tweets
   const renderTweets = function(tweets) {
@@ -39,6 +28,9 @@ $(document).ready(() => {
 
       // Append the created tweet article element to the #tweets-container
       $('.tweets').append($tweetArticle);
+
+      // Update the datetime for each new tweet
+      $('.timeago').timeago();
     }
   };
 
@@ -61,13 +53,14 @@ $(document).ready(() => {
 
     // Footer
     const $footer = $('<footer>');
-    const $output = $('<output>').attr('name', 'datetime').text(tweet.created_at);
+    const isoDateTime = new Date().toISOString();
+    const $time = $('<time>').addClass('timeago').attr('datetime', isoDateTime);
     const $span = $('<span>');
     const $icon1 = $('<i>').addClass('fa fa-brands fa-font-awesome');
     const $icon2 = $('<i>').addClass('fa fa-solid fa-retweet');
     const $icon3 = $('<i>').addClass('fa fa-solid fa-heart');
     $span.append($icon1, $icon2, $icon3);
-    $footer.append($output, $span);
+    $footer.append($time, $span);
 
     // Append all elements in article to article
     $tweetArticle.append($header, $tweetParagraph, $footer);
@@ -75,8 +68,8 @@ $(document).ready(() => {
     return $tweetArticle;
   };
 
-  // Render the tweets with the fake data taken from initial-tweets.json
-  renderTweets(data);
+  // GET and render tweets when page loads
+  loadTweets();
 
   // Event listener for form submission
   $('form').submit(function(event) {
