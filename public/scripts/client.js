@@ -4,6 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(() => {
+  
+
   // GET tweets from the server /tweets page
   const loadTweets = () => {
       $.ajax({
@@ -27,10 +29,10 @@ $(document).ready(() => {
       const $tweetArticle = createTweetElement(tweet);
 
       // Append the created tweet article element to the #tweets-container
-      $('.tweets').append($tweetArticle);
+      $('.tweets').prepend($tweetArticle);
 
       // Update the datetime for each new tweet
-      $('.timeago').timeago();
+      $('.ttimeago').timeago();
     }
   };
 
@@ -51,10 +53,15 @@ $(document).ready(() => {
     // Tweet/paragraph
     const $tweetParagraph = $('<p>').text(tweet.content.text);
 
+    // Get the date of the tweet
+    let tweetDate = new Date(tweet.created_at);
+
+    // convert the date to the format timeago is exopecting
+    let isoDate = tweetDate.toISOString();
+
     // Footer
     const $footer = $('<footer>');
-    const isoDateTime = new Date().toISOString();
-    const $time = $('<time>').addClass('timeago').attr('datetime', isoDateTime);
+    const $time = $('<time>').addClass('ttimeago').attr('datetime', isoDate);
     const $span = $('<span>');
     const $icon1 = $('<i>').addClass('fa fa-brands fa-font-awesome');
     const $icon2 = $('<i>').addClass('fa fa-solid fa-retweet');
