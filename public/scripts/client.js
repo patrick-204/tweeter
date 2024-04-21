@@ -77,4 +77,26 @@ $(document).ready(() => {
 
   // Render the tweets with the fake data taken from initial-tweets.json
   renderTweets(data);
+
+  // Event listener for form submission
+  $('form').submit(function(event) {
+    // Prevent default form submission
+    event.preventDefault();
+
+    // Serialize the form data in query string format
+    const formData = $(this).serialize();
+
+    // Send query string formatted text to Server 
+    $.ajax({
+      url: '/tweets',
+      type: 'POST',
+      data: formData,
+      success: function(response) {
+        console.log("it worked");
+      },
+      error: function(xhr, status, error) {
+        console.log("error");
+      }
+    });
+  });
 });
