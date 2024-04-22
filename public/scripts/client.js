@@ -80,11 +80,28 @@ $(document).ready(() => {
 
   // Event listener for form submission
   $('form').submit(function(event) {
+    const maxChars = 140;
+
     // Prevent default form submission
     event.preventDefault();
 
     // Serialize the form data in query string format
     const formData = $(this).serialize();
+
+    // Get the tweet data
+    const tweetData = $(this).find('textarea[name="text"]').val();
+
+    // Ensure the tweet is not empty
+    if (!tweetData) {
+      alert("Tweet is empty! At least on character is required.")
+      return;
+    }
+
+    // Ensure the maximum tweet chars have not been exceeded
+    if (tweetData.length > maxChars) {
+      alert("You have exceeded 140 characters! Please reduce tweet size.")
+      return;
+    }
 
     // Send query string formatted text to Server 
     $.ajax({
