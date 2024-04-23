@@ -85,26 +85,12 @@ $(document).ready(() => {
     // Ensure the tweet is not empty
     if (!tweetData) {
       alert("Tweet is empty! At least on character is required.")
-
-      // Clear the form
-      $('textarea').val('');
-
-      // Reset the counter and remove the red color
-      $('.counter').text('140').removeClass('over-char-count');
-
       return;
     }
 
     // Ensure the maximum tweet chars have not been exceeded
     if (tweetData.length > maxChars) {
       alert("You have exceeded 140 characters! Please reduce tweet size.")
-
-      // Clear the form
-      $('textarea').val('');
-
-      // Reset the counter and remove the red color
-      $('.counter').text('140').removeClass('over-char-count');
-
       return;
     }
 
