@@ -75,33 +75,57 @@ $(document).ready(() => {
     return $tweetArticle;
   };
 
-  // GET and render tweets when page loads
-  loadTweets();
-
-  // Event listener for form submission
-  $('form').submit(function(event) {
+  // Helper function for determing if tweet is valid
+  const isTweetValid = function(form) {
     const maxChars = 140;
 
-    // Prevent default form submission
-    event.preventDefault();
-
-    // Serialize the form data in query string format
-    const formData = $(this).serialize();
-
     // Get the tweet data
-    const tweetData = $(this).find('textarea[name="text"]').val();
+    const tweetData = $(form).find('textarea[name="text"]').val().trim();
 
     // Ensure the tweet is not empty
     if (!tweetData) {
       alert("Tweet is empty! At least on character is required.")
+
+      // Clear the form
+      $('textarea').val('');
+
+      // Reset the counter and remove the red color
+      $('.counter').text('140').removeClass('over-char-count');
+
       return;
     }
 
     // Ensure the maximum tweet chars have not been exceeded
     if (tweetData.length > maxChars) {
       alert("You have exceeded 140 characters! Please reduce tweet size.")
+
+      // Clear the form
+      $('textarea').val('');
+
+      // Reset the counter and remove the red color
+      $('.counter').text('140').removeClass('over-char-count');
+
       return;
     }
+
+    return true;
+  };
+
+  // GET and render tweets when page loads
+  loadTweets();
+
+  // Event listener for form submission
+  $('form').submit(function(event) {
+    // Prevent default form submission
+    event.preventDefault();
+
+    // Checks if tweet is valid
+    if (!isTweetValid($(this))) {
+      return;
+    }
+
+    // Serialize the form data in query string format
+    const formData = $(this).serialize();
 
     // Send query string formatted text to Server 
     $.ajax({

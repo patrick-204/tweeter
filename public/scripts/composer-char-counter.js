@@ -14,7 +14,7 @@ $(document).ready(() => {
     counterRef.text(charsLeft);
 
     // If there are over 140 chars then turn the counter red
-    if (charsLength > 140) {
+    if (charsLeft < 0) {
       counterRef.addClass('over-char-count');
     } else {
       counterRef.removeClass('over-char-count');
