@@ -4,16 +4,16 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(() => {
-  
-
   // GET tweets from the server /tweets page
   const loadTweets = () => {
-      $.ajax({
+    // Ajax request for loading tweets
+    $.ajax({
       url: '/tweets',
       type: 'GET',
       dataType: 'json',
       success: function(tweetData) {
         renderTweets(tweetData);
+        // tweeted = true;
       },
       error: function(xhr, status, error) {
         console.log(error);
@@ -23,6 +23,9 @@ $(document).ready(() => {
 
   // Render tweets
   const renderTweets = function(tweets) {
+    // Clear existing tweets so are not duplicated
+    $('.tweets').empty();
+
     // Loop through tweets
     for (const tweet of tweets) {
       // Call createTweetElement function to create a tweet article element
@@ -85,19 +88,19 @@ $(document).ready(() => {
     // Ensure the tweet is not empty
     if (!tweetData) {
       alert("Tweet is empty! At least on character is required.")
-      return;
+      return false;
     }
 
     // Ensure the maximum tweet chars have not been exceeded
     if (tweetData.length > maxChars) {
       alert("You have exceeded 140 characters! Please reduce tweet size.")
-      return;
+      return false;
     }
 
     return true;
   };
 
-  // GET and render tweets when page loads
+  // GET and render existing tweets when page loads
   loadTweets();
 
   // Event listener for form submission
@@ -120,6 +123,8 @@ $(document).ready(() => {
       data: formData,
       success: function(response) {
         console.log("it worked");
+        // Add the new tweet to the page dynamically
+        loadTweets();
         $('textarea').val('');
         $('.counter').text('140');
       },
