@@ -4,6 +4,20 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(() => {
+  // Helper function for displaying error message
+  const displayError = (errorMessage) => {
+    const $errorTweet = $('.tweet-error');
+    $errorTweet.text(errorMessage);
+    $errorTweet.removeClass('hidden');
+  };
+
+  // Helper function for displaying error message
+  const hideError = () => {
+    const $errorTweet = $('.tweet-error');
+    $errorTweet.empty();
+    $errorTweet.addClass('hidden');
+  }
+
   // GET tweets from the server /tweets page
   const loadTweets = () => {
     // Ajax request for loading tweets
@@ -13,10 +27,9 @@ $(document).ready(() => {
       dataType: 'json',
       success: function(tweetData) {
         renderTweets(tweetData);
-        // tweeted = true;
       },
       error: function(xhr, status, error) {
-        console.log(error);
+      displayError(`Error when reading existing tweets: ${error}`);
       }
     });
   }
@@ -31,7 +44,7 @@ $(document).ready(() => {
       // Call createTweetElement function to create a tweet article element
       const $tweetArticle = createTweetElement(tweet);
 
-      // Append the created tweet article element to the #tweets-container
+      // Prepend the created tweet article element to the #tweets container
       $('.tweets').prepend($tweetArticle);
 
       // Update the datetime for each new tweet
@@ -59,7 +72,7 @@ $(document).ready(() => {
     // Get the date of the tweet
     let tweetDate = new Date(tweet.created_at);
 
-    // convert the date to the format timeago is exopecting
+    // convert the date to the format timeago is expecting
     let isoDate = tweetDate.toISOString();
 
     // Footer
@@ -87,13 +100,13 @@ $(document).ready(() => {
 
     // Ensure the tweet is not empty
     if (!tweetData) {
-      alert("Tweet is empty! At least on character is required.")
+      displayError("Tweet cannot be empty!");
       return false;
     }
 
     // Ensure the maximum tweet chars have not been exceeded
     if (tweetData.length > maxChars) {
-      alert("You have exceeded 140 characters! Please reduce tweet size.")
+      displayError("You have exceeded 140 characters! Please reduce tweet size.");
       return false;
     }
 
@@ -113,6 +126,9 @@ $(document).ready(() => {
       return;
     }
 
+    // Hide errors if tweet is valid
+    hideError();
+
     // Serialize the form data in query string format
     const formData = $(this).serialize();
 
@@ -125,11 +141,12 @@ $(document).ready(() => {
         console.log("it worked");
         // Add the new tweet to the page dynamically
         loadTweets();
+        // Clear the text area and set counter to 140 after successful tweet
         $('textarea').val('');
         $('.counter').text('140');
       },
       error: function(xhr, status, error) {
-        console.log("error");
+        displayError(`Error when Submitting tweet!: ${error}`);
       }
     });
   });
