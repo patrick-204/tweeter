@@ -26,9 +26,8 @@ body {
 }
 
 .container {
-  margin: 520px auto; 
   background-color: inherit;
-  width: 90%;
+  width: 100%;
 }
 
 /*

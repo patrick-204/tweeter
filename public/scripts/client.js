@@ -11,7 +11,7 @@ $(document).ready(() => {
     $errorTweet.removeClass('hidden');
   };
 
-  // Helper function for displaying error message
+  // Helper function for hiding error message
   const hideError = () => {
     const $errorTweet = $('.tweet-error');
     $errorTweet.empty();
@@ -29,7 +29,7 @@ $(document).ready(() => {
         renderTweets(tweetData);
       },
       error: function(xhr, status, error) {
-      displayError(`Error when reading existing tweets: ${error}`);
+        displayError(`Error when reading existing tweets: ${error}`);
       }
     });
   }
@@ -44,7 +44,7 @@ $(document).ready(() => {
       // Call createTweetElement function to create a tweet article element
       const $tweetArticle = createTweetElement(tweet);
 
-      // Prepend the created tweet article element to the #tweets container
+      // Prepend the created tweet article element to the tweets container
       $('.tweets').prepend($tweetArticle);
 
       // Update the datetime for each new tweet
