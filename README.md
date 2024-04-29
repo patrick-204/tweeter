@@ -21,8 +21,8 @@ Tweeter is a simple, single-page Twitter clone. The user can post and read tweet
 ## Getting Started
 
 Follow the below steps to run the Tweeter project:
-2. Clone this repository: git clone https://github.com/patrick-204/tweeter
-3. Install dependencies using the `npm install` command.
+1. Clone this repository: git clone https://github.com/patrick-204/tweeter
+2. Install dependencies using the `npm install` command.
 3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
 4. Go to <http://localhost:8080/> in your browser.
 5. Post a Tweet by entering your Tweet into the designated text-box and selecting the 'TWEET' button.
