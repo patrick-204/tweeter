@@ -36,4 +36,13 @@ Follow the below steps to run the Tweeter project:
 - express
 - node 5.10.x or above
 
+## Technology
+
+- HTML
+- CSS
+- JavaScript
+- jQuery
+- Normalize.css
+- Font Awesome
+
 
