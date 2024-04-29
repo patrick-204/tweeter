@@ -42,14 +42,9 @@
   width: 100%;
 }
 
-.tweet-container {
-  margin-left: 1.5em;
-  margin-right: 1.5em;
-}
-
 /* Tablet styles */
 @media only screen and (min-width: 768px) {
-  .container {
+  body .container {
     width: 100%;
     margin-top: 100px;
     display: flex;
@@ -80,7 +75,7 @@
   
   .tweets {
     margin-top: 200px;
-    margin-left: -350px;
+    margin-left: -275px;
   }
 }
 
@@ -88,7 +83,6 @@
 @media only screen and (min-width: 1024px) {
   .container {
     width: 100%;
-    margin-top: 120px;
     margin-left: 150px;
     display: flex;
     justify-content: center;
@@ -111,8 +105,9 @@
 
   .tweet-container {
     width: inherit;
-    margin-top: -55px;
+    margin-top: -35px;
     margin-right: 0.5em;
+    margin-left: 200px;
     padding: 20px;
   }
 

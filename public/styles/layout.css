@@ -25,9 +25,10 @@ body {
   display: flex;
 }
 
-.container {
+body .container {
   background-color: inherit;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
 }
 
 /*
