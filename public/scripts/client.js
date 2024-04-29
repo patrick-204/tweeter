@@ -67,7 +67,7 @@ $(document).ready(() => {
     $header.append($div, $handleSpan);
 
     // Tweet/paragraph
-    const $tweetParagraph = $('<p>').text(tweet.content.text);
+    const $tweetParagraph = $('<p>').text(tweet.content.text).css('word-wrap', 'break-word');
 
     // Get the date of the tweet
     let tweetDate = new Date(tweet.created_at);
