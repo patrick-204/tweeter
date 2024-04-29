@@ -16,7 +16,7 @@ $(document).ready(() => {
     const $errorTweet = $('.tweet-error');
     $errorTweet.empty();
     $errorTweet.addClass('hidden');
-  }
+  };
 
   // GET tweets from the server /tweets page
   const loadTweets = () => {
@@ -32,7 +32,7 @@ $(document).ready(() => {
         displayError(`Error when reading existing tweets: ${error}`);
       }
     });
-  }
+  };
 
   // Render tweets
   const renderTweets = function(tweets) {
@@ -138,7 +138,7 @@ $(document).ready(() => {
       type: 'POST',
       data: formData,
       success: function(response) {
-        console.log("it worked");
+        console.log(`it worked. Response: ${response}`);
         // Add the new tweet to the page dynamically
         loadTweets();
         // Clear the text area and set counter to 140 after successful tweet
